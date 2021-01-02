@@ -10,8 +10,29 @@ namespace WordCount
 		/// but does not necessarily need to be valid English. 
 		/// </summary>
 		public int CountWords(string phrase)
-		{
-			throw new NotImplementedException();
+		{ 
+			if (phrase== null)
+      {
+				return 0;
+      }
+
+			int c = 0;
+			bool space = true;
+
+			foreach(char character in phrase)
+      {
+				if(character != ' ' && space)
+        {
+					c++;
+					space = false;
+        }
+        else if(character == ' ')
+        {
+					space = true;
+        }
+      }
+
+			return c;
 		}
 	}
 }
