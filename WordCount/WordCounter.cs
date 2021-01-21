@@ -1,7 +1,4 @@
-﻿using System;
-using System.Linq;
-
-namespace WordCount
+﻿namespace WordCount
 {
   public class WordCounter
   {
@@ -17,18 +14,20 @@ namespace WordCount
         return 0;
       }
 
-      int c = 0;
-      var segments = phrase.Split(' ');
+      var count = 0;
 
-      foreach (string segment in segments)
+      for (int i = 0; i < phrase.Length; i++)
       {
-        if (segment != "")
+        var endOfWord = i != 0 && phrase[i] == ' ' && phrase[i - 1] != ' ';
+        var letterAtEndOfString = phrase[i] != ' ' && i == phrase.Length - 1;
+
+        if (endOfWord || letterAtEndOfString)
         {
-          c++;
+          count++;
         }
       }
 
-      return c;
+      return count;
     }
   }
 }
